@@ -1,6 +1,8 @@
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class testPartie2TP1 {
     
@@ -18,7 +20,13 @@ public class testPartie2TP1 {
                     System.out.println(infos[j]);
                 }
             } else {
-                System.out.println("Le chemin ne donnait pas accès à une classe java.");
+                //pour l'instant, cette partie liste les fichiers et les dossiers à l'intérieur du chemin d'accès
+                File folder = new File(args[0]);
+                String[] listOfFiles = folder.list();
+
+                for (int i = 0; i < listOfFiles.length; i++) {
+                    System.out.println(listOfFiles[i]);
+                }
             }
         }
     }
