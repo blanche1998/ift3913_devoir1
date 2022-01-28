@@ -21,11 +21,11 @@ public class testPartie2TP1 {
                 }
             } else {
                 //pour l'instant, cette partie liste les fichiers et les dossiers à l'intérieur du chemin d'accès
-                File folder = new File(args[0]);
-                String[] listOfFiles = folder.list();
+                File racine = new File(args[0]);
+                String[] contenu = racine.list();
 
-                for (int i = 0; i < listOfFiles.length; i++) {
-                    System.out.println(listOfFiles[i]);
+                for (int i = 0; i < contenu.length; i++) {
+                    System.out.println(contenu[i]);
                 }
             }
         }
