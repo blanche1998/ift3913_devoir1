@@ -1,8 +1,6 @@
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class testPartie2TP1 {
     
@@ -22,11 +20,27 @@ public class testPartie2TP1 {
             } else {
                 //pour l'instant, cette partie liste les fichiers et les dossiers à l'intérieur du chemin d'accès
                 File racine = new File(args[0]);
+                //on a paquet, il faut donc le parse
+                if(racine.isDirectory()) {
+                    String[][] infos = ParsePackage.parse(args[0]);
+                    String[] packages = infos[0];
+                    String[] classes = infos[1];
+                    System.out.println("Voici les classes :");
+                    for(int i = 0; i < classes.length; i++) {
+                        System.out.println(classes[i]);
+                    }
+                    System.out.println("Voici les paquets :");
+                    for(int m = 0; m < packages.length; m++) {
+                        System.out.println(packages[m]);
+                    }
+                }
+                /*
                 String[] contenu = racine.list();
 
                 for (int i = 0; i < contenu.length; i++) {
                     System.out.println(contenu[i]);
                 }
+                */
             }
         }
     }
