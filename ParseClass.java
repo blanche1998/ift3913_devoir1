@@ -4,64 +4,87 @@ import java.util.Scanner; // Import the Scanner class to read text files
 
 public  class ParseClass{
 
+    /**
+     * 
+     * @param ligne à analyse
+     * @return true si la ligne contient un commentaire qui commence par "//"; false sinon
+     */
     public static boolean containsComment(String ligne) {
-        boolean test = false;
+        boolean first = false;
         for(int i = 0; i < ligne.length();i++) {
             if(ligne.charAt(i)=='/') {
-                if(test) {
+                //le paramètre précédent était aussi un '/' --> on a un commentaire
+                //on peut cesser de chercher
+                if(first) {
                     return true;
                 } else {
-                    test = true; 
+                    first = true; 
                 }
-            } else if(test) {
-                test = false;
+            } else if(first) { //la caractère précédent était un '/' mais il n'y en a pas
+                               //un deuxième qui suit
+                first = false;
             }
         }
         return false;
     }
 
+    /**
+     * 
+     * @param ligne à analyser
+     * @return true si on a un début de commentaire -- donc un '/*' ('/**' sera découvert également)
+     */
     public static boolean debut(String ligne) {
-        boolean test = false;
+        boolean slash = false;
         for(int i = 0; i < ligne.length(); i++) {
             if(ligne.charAt(i)=='/') {
-                test = true;
-            } else if(test && ligne.charAt(i)=='*') {
+                slash = true;
+            } else if(slash && ligne.charAt(i)=='*') {
                 return true;
-            } else if(test) {
-                test = false;
+            } else if(slash) {
+                slash = false;
             }
         }
         return false;
     }
 
+    /**
+     * 
+     * @param ligne à analyser
+     * @return true si on a une fin de commentaire -- donc un '* /'
+     */
     public static boolean fin(String ligne) {
-        boolean test = false;
+        boolean asterisk = false;
         for(int i = 0; i < ligne.length(); i++) {
             if(ligne.charAt(i)=='*') {
-                test = true;
-            } else if(test && ligne.charAt(i)=='/') {
+                asterisk = true;
+            } else if(asterisk && ligne.charAt(i)=='/') {
                 return true;
-            } else if(test) {
-                test = false;
+            } else if(asterisk) {
+                asterisk = false;
             }
         }
         return false;
     }
 
+    /**
+     * On veut vérifier si la ligne est vide car les lignes vides ne sont pas à prendre en compte
+     * @param ligne à analyser
+     * @return true si vide, false sinon
+     */
     public static boolean vide(String ligne) {
         for(int i = 0; i < ligne.length(); i++) {
             if(ligne.charAt(i) != ' ') {
                 return false;
             }
         }
-        return true;
+        return true;//retournera true si la ligne est de longueur 1
     }
 
-    public static Object[] read(String acces) {
-        Object[] mesures = new Object[3];
+    public static double[] read(String acces) {
+        double[] mesures = new double[3];
         boolean debut = false; //servira à voir quand on a un commentaire ouvert qui pourrait s'étendre sur plus d'une ligne
-        int compteCommentaires = 0;
-        int compteLignes = 0;
+        double compteCommentaires = 0;
+        double compteLignes = 0;
         //cette méthode pour lire un fichier est inspirée de celle trouvée sur : https://www.w3schools.com/java/java_files_read.asp
         //Puisque le code pour lire un fichier ne relève pas des connaissances du cours, on prends sur nous d'utiliser ce code
         try {
@@ -71,7 +94,6 @@ public  class ParseClass{
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 //on ne prend pas en compte les lignes vides
-                System.out.println("Nombre de caractères: "+data.length());
                 if(data.length()!=0 && !ParseClass.vide(data)) {
                     compteLignes += 1;
                     if(ParseClass.containsComment(data)) {
@@ -87,14 +109,12 @@ public  class ParseClass{
                     }
                 }
             }
-            System.out.println("Nombre de lignes : "+compteLignes);
-            System.out.println("Nombre de commentaires : "+compteCommentaires);
             myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        double densite = ((double) compteCommentaires)/((double) compteLignes);
+        double densite = compteCommentaires/compteLignes;
         mesures[0] = compteLignes;
         mesures[1] = compteCommentaires;
         mesures[2] = densite;
