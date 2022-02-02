@@ -1,11 +1,10 @@
 import java.security.AllPermission;
 
 public class testCode {
-    allo 
+   /* allo
     
     //commentaire
     pas de commentaire /** 
     bj //
     */
 }
-gh
