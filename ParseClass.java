@@ -5,7 +5,7 @@ import java.util.Scanner; // Import the Scanner class to read text files
 public  class ParseClass{
 
     /**
-     * 
+     *
      * @param ligne à analyse
      * @return true si la ligne contient un commentaire qui commence par "//"; false sinon
      */
@@ -18,10 +18,10 @@ public  class ParseClass{
                 if(first) {
                     return true;
                 } else {
-                    first = true; 
+                    first = true;
                 }
             } else if(first) { //la caractère précédent était un '/' mais il n'y en a pas
-                               //un deuxième qui suit
+                //un deuxième qui suit
                 first = false;
             }
         }
@@ -29,7 +29,7 @@ public  class ParseClass{
     }
 
     /**
-     * 
+     *
      * @param ligne à analyser
      * @return true si on a un début de commentaire -- donc un '/*' ('/**' sera découvert également)
      */
@@ -48,7 +48,7 @@ public  class ParseClass{
     }
 
     /**
-     * 
+     *
      * @param ligne à analyser
      * @return true si on a une fin de commentaire -- donc un '* /'
      */
@@ -80,6 +80,45 @@ public  class ParseClass{
         return true;//retournera true si la ligne est de longueur 1
     }
 
+    /**
+     *
+     * @param ligne la ligne qu'on veut parcourir
+     * @param pattern le pattern de string qu'on cherche
+     * @return true si la ligne contient pattern, false sinon
+     */
+    public static boolean contains(String ligne, String pattern) {
+        boolean isInQuote = false;
+        int length = pattern.length();
+        int indexChar = 0;
+        char test = pattern.charAt(indexChar); //contient le premier caractère qu'on recherche
+        for(int i = 0; i < ligne.length(); i++) {
+            if(!isInQuote) {
+                if(ligne.charAt(i)=='"' || ligne.charAt(i)=='\'') {
+                    isInQuote = true; //on commence un commentaire
+                    indexChar = 0;
+                    test = pattern.charAt(indexChar);
+                } else { //on vérifie si on voit notre pattern
+                    if(ligne.charAt(i) == test) {
+                        indexChar += 1;
+                        if(indexChar == length) {
+                            return true; //on a trouvé le motif
+                        } else {
+                            test = pattern.charAt(indexChar);
+                        }
+                    } else {
+                        indexChar = 0;
+                        test = pattern.charAt(indexChar);
+                    }
+                }
+            } else {
+                if(ligne.charAt(i)=='"' || ligne.charAt(i)=='\'') {
+                    isInQuote = false; //on finit le commentaire
+                }
+            }
+        }
+        return false;
+    }
+
     public static double[] read(String acces) {
         double[] mesures = new double[3];
         boolean debut = false; //servira à voir quand on a un commentaire ouvert qui pourrait s'étendre sur plus d'une ligne
@@ -99,7 +138,7 @@ public  class ParseClass{
                     if(ParseClass.containsComment(data)) {
                         compteCommentaires += 1;
                     }
-                    if(debut || ParseClass.debut(data)) { //on est à l'intérieur d'un commentaire ou au début 
+                    if(debut || ParseClass.debut(data)) { //on est à l'intérieur d'un commentaire ou au début
                         compteCommentaires += 1;
                         if(ParseClass.fin(data)) {
                             debut = false;
