@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class testPartie2TP1 {
+public class MesureMetrics {
 
    public static void writeCSV(String[][] content, String type) {
         try (PrintWriter writer = new PrintWriter(type + ".csv")) {
@@ -47,6 +47,7 @@ public class testPartie2TP1 {
                 //à changer pour que ces infos soient redirigées vers le fichier csv classe
                 //le fichier package sera alors vide
                 double[] infos = ParseClass.read(args[0]);
+
                 //writeCSV(infos, "classes");
             }
 
