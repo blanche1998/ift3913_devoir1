@@ -7,7 +7,7 @@ public class MesureMetrics {
             StringBuilder sb = new StringBuilder();
             sb.append("chemin,");
             sb.append(type);
-            sb.append(",classe_LOC,classes_CLOC,classe_DC\n");
+            sb.append(",classe_LOC,classe_CLOC,classe_DC\n");
 
             for (String[] strings : content) {
                 for (String string : strings) {
