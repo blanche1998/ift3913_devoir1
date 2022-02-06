@@ -1,6 +1,6 @@
 import java.io.File;
 
-public class ParsePackage {
+public abstract class ParsePackage {
     
     /**
      * 
@@ -34,7 +34,8 @@ public class ParsePackage {
                 infosToAdd[3] = ""+infos[1];
                 infosToAdd[4] = ""+infos[2];
                 classInfo = ParsePackage.addClass(infosToAdd,classInfo);
-            } else {
+            }
+            else {
                 File dossier = new File(path+"/"+contenu[i]);
                 if(dossier.isDirectory()) {
                     String[][][] infosPaquet = ParsePackage.parse(path+"/"+contenu[i],contenu[i]);
@@ -85,6 +86,7 @@ public class ParsePackage {
      */
     public static String[][] addClass(String[] infos,String[][] tableau) {
         String[][] tab = new String[tableau.length+1][5];
+
         //on recopie le tableau
         for(int j = 0; j < tableau.length; j++) {
             tab[j] = tableau[j];

@@ -2,16 +2,16 @@ import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
 
-public  class ParseClass{
-
+public abstract class ParseClass{
+    String COMMENT_TYPE = "//";
     /**
      *
-     * @param ligne à analyse
-     * @return true si la ligne contient un commentaire qui commence par "//"; false sinon
+     * @param ligne à analyser
+     * @return true si la ligne contient un commentaire qui commence par COMMENT_TYPE; false sinon
      */
     public static boolean containsComment(String ligne) {
         boolean first = false;
-        for(int i = 0; i < ligne.length();i++) {
+        for(int i = 0; i < ligne.length(); i++) {
             if(ligne.charAt(i)=='/') {
                 //le paramètre précédent était aussi un '/' --> on a un commentaire
                 //on peut cesser de chercher
@@ -77,7 +77,7 @@ public  class ParseClass{
                 return false;
             }
         }
-        return true;//retournera true si la ligne est de longueur 1
+        return true; //retournera true si la ligne est de longueur 1
     }
 
     /**
@@ -125,7 +125,7 @@ public  class ParseClass{
         double compteCommentaires = 0;
         double compteLignes = 0;
         //cette méthode pour lire un fichier est inspirée de celle trouvée sur : https://www.w3schools.com/java/java_files_read.asp
-        //Puisque le code pour lire un fichier ne relève pas des connaissances du cours, on prends sur nous d'utiliser ce code
+        //Puisque le code pour lire un fichier ne relève pas des connaissances du cours, on prend sur nous d'utiliser ce code
         try {
             File myObj = new File(acces);
             Scanner myReader = new Scanner(myObj);
