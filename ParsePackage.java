@@ -29,7 +29,7 @@ public abstract class ParsePackage {
                 cloc += infos[1];
                 String[] infosToAdd = new String[5];
                 infosToAdd[0] = path+"/"+contenu[i];
-                infosToAdd[1] = contenu[i];
+                infosToAdd[1] = ParseClass.extraireNom(contenu[i]);
                 infosToAdd[2] = ""+infos[0];
                 infosToAdd[3] = ""+infos[1];
                 infosToAdd[4] = ""+infos[2];

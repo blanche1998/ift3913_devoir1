@@ -43,12 +43,19 @@ public class MesureMetrics {
 
             //si end=.java, alors on a une classe java
             if (end.equals(".java")) {
-
-                //à changer pour que ces infos soient redirigées vers le fichier csv classe
-                //le fichier package sera alors vide
                 double[] infos = ParseClass.read(args[0]);
+                String nom = ParseClass.extraireNom(args[0]);
+                //si on a juste une classe, le tableau des paquets est vide
+                String[][] packages = new String[0][5];
+                String[][] classes = new String[1][5];
+                classes[0][0] = args[0]; //chemin d'accès
+                classes[0][1] = nom;
+                classes[0][2] = ""+infos[0];//loc
+                classes[0][3] = ""+infos[1];//cloc
+                classes[0][4] = ""+infos[2];//densité
 
-                //writeCSV(infos, "class", "classes");
+                writeCSV(classes, "class", "classes");
+                writeCSV(packages, "paquet", "paquets");
             }
 
             else {
