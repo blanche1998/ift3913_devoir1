@@ -2,8 +2,8 @@ import java.io.*;
 
 public class MesureMetrics {
 
-   public static void writeCSV(String[][] content, String type) {
-        try (PrintWriter writer = new PrintWriter(type + ".csv")) {
+   public static void writeCSV(String[][] content, String type, String outputName) {
+        try (PrintWriter writer = new PrintWriter(outputName + ".csv")) {
             StringBuilder sb = new StringBuilder();
             sb.append("chemin,");
             sb.append(type);
@@ -48,7 +48,7 @@ public class MesureMetrics {
                 //le fichier package sera alors vide
                 double[] infos = ParseClass.read(args[0]);
 
-                //writeCSV(infos, "classes");
+                //writeCSV(infos, "class", "classes");
             }
 
             else {
@@ -59,8 +59,8 @@ public class MesureMetrics {
                     String[][][] infos = ParsePackage.parse(args[0], args[0]);
                     String[][] packages = infos[0];
                     String[][] classes = infos[1];
-                    writeCSV(classes, "classes");
-                    writeCSV(packages, "paquets");
+                    writeCSV(classes, "class", "classes");
+                    writeCSV(packages, "paquet", "paquets");
                 }
 
                 else {
