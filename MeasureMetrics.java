@@ -1,13 +1,22 @@
 import java.io.*;
 
-public class MesureMetrics {
+public class MeasureMetrics {
 
    public static void writeCSV(String[][] content, String type, String outputName) {
         try (PrintWriter writer = new PrintWriter(outputName + ".csv")) {
             StringBuilder sb = new StringBuilder();
             sb.append("chemin,");
             sb.append(type);
-            sb.append(",classe_LOC,classe_CLOC,classe_DC\n");
+            sb.append(",classe_LOC,classe_CLOC,classe_DC,");
+
+            if(type.equals("class")){
+                sb.append("WMC,classe_BC");
+            }
+            if(type.equals("paquet")){
+                sb.append("WCP,paquet_BC");
+            }
+
+            sb.append("\n");
 
             for (String[] strings : content) {
                 for (String string : strings) {
@@ -25,14 +34,12 @@ public class MesureMetrics {
             System.out.println(e.getMessage());
         }
     }
-    
+
     /**
-     * 
+     *
      * @param args le chemin d'accès spécifié par l'usager qui mène à la classe ou au paquet
      */
     public static void main(String[] args) {
-        //System.out.println("done!");
-
         if (args.length != 1) {
             System.out.println("Veuillez entrer le chemin d'accès d'un dossier qui contient du code java.");
         }
@@ -47,12 +54,14 @@ public class MesureMetrics {
                 String nom = ParseClass.extraireNom(args[0]);
                 //si on a juste une classe, le tableau des paquets est vide
                 String[][] packages = new String[0][5];
-                String[][] classes = new String[1][5];
+                String[][] classes = new String[1][7];
                 classes[0][0] = args[0]; //chemin d'accès
                 classes[0][1] = nom;
-                classes[0][2] = ""+infos[0];//loc
-                classes[0][3] = ""+infos[1];//cloc
-                classes[0][4] = ""+infos[2];//densité
+                classes[0][2] = ""+infos[0]; //loc
+                classes[0][3] = ""+infos[1]; //cloc
+                classes[0][4] = ""+infos[2]; //densité
+                classes[0][5] = ""+infos[3]; //densité
+                classes[0][6] = ""+infos[4]; //densité
 
                 writeCSV(classes, "class", "classes");
                 writeCSV(packages, "paquet", "paquets");
