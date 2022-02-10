@@ -72,7 +72,8 @@ public class MeasureMetrics {
 
                 //on a un paquet, il faut donc le parse
                 if (racine.isDirectory()) {
-                    String[][][] infos = ParsePackage.parse(args[0], args[0]);
+                    String name = ParseClass.extraireNom(args[0]);
+                    String[][][] infos = ParsePackage.parse(args[0], name);
                     String[][] packages = infos[0];
                     String[][] classes = infos[1];
                     writeCSV(classes, "class", "classes");

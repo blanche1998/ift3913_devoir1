@@ -18,6 +18,8 @@ public abstract class ParsePackage {
         File racine = new File(path);
         String[] contenu = racine.list();
 
+        int nbreClasse = 0;
+
         /*
         Il faut parcourir tout le contenu du dossier. Lorsque l'élément est une classe, on update les
         métriques du paquet. Si c'est un paquet, il faut alors aller parcourir ce paquet.
@@ -42,13 +44,15 @@ public abstract class ParsePackage {
                 infosToAdd[5] = "" + infos[3];
                 infosToAdd[6] = "" + infos[4];
                 classInfo = ParsePackage.addClass(infosToAdd, classInfo);
+
+                nbreClasse += 1;
             }
 
             else {
                 File dossier = new File(path + "/" + s);
 
                 if (dossier.isDirectory()) {
-                    String[][][] infosPaquet = ParsePackage.parse(path + "/" + s, s);
+                    String[][][] infosPaquet = ParsePackage.parse(path + "/" + s, name+"."+s);
                     String[][] classes = infosPaquet[1];
                     String[][] paquets = infosPaquet[0];
 
@@ -87,7 +91,7 @@ public abstract class ParsePackage {
         newPackage[6] = ""+bc;
 
         //si loc=0 et cloc=0, alors le dossier ne contenait aucun code java, donc on ne l'ajoute pas
-        if(loc!=0 || cloc!=0) {
+        if(loc!=0 && nbreClasse > 0) {
             packageInfo = ParsePackage.addPackage(newPackage, packageInfo);
         }
 
