@@ -81,7 +81,6 @@ public abstract class ParseClass{
         double compteCommentaires = 0;
         double compteLignes = 0;
         double WMC = 0;
-        boolean firstMethod = false;
 
         /*
         cette méthode pour lire un fichier est inspirée de celle trouvée sur :
@@ -100,11 +99,11 @@ public abstract class ParseClass{
                 if(data.length()!=0 && !ParseClass.vide(data)) {
                     compteLignes += 1;
 
-                    // indique la première méthode de la classe (on ignore les delimiters des attributs)
+                    // on compte les méthodes de la classe (on ignore les delimiters des attributs)
                     for (String classDelimiter : CLASS_DELIMITERS) {
                         if (ParseClass.contains(data, classDelimiter,false) != -1) {
                             if (ParseClass.contains(data, "){",true) != -1) {
-                                firstMethod = true;
+                                WMC += 1;
                             }
                         }
                     }
@@ -113,15 +112,6 @@ public abstract class ParseClass{
                     for (String flowElement : FLOW_ELEMENTS) {
                         if (ParseClass.contains(data, flowElement,false) != -1) {
                             WMC += 1;
-                        }
-                    }
-
-                    // compte le nombre de méthodes
-                    if(firstMethod){
-                        for (String classDelimiter : CLASS_DELIMITERS) {
-                            if (ParseClass.contains(data, classDelimiter,false) != -1) {
-                                WMC += 1;
-                            }
                         }
                     }
 
