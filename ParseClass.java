@@ -77,6 +77,8 @@ public abstract class ParseClass{
         boolean debut = false;
         double compteCommentaires = 0;
         double compteLignes = 0;
+        double WMC = 0;
+        boolean firstMethod = false;
 
         /*
         cette méthode pour lire un fichier est inspirée de celle trouvée sur :
@@ -94,61 +96,6 @@ public abstract class ParseClass{
                 //on ne prend pas en compte les lignes vides
                 if(data.length()!=0 && !ParseClass.vide(data)) {
                     compteLignes += 1;
-
-                    //on est à l'intérieur d'un commentaire ou au début
-                    if(debut || (ParseClass.contains(data,"if")!=-1)) {
-                        compteCommentaires += 1;
-
-                        //on n'est pas encore sur la dernière ligne du commentaire
-                        debut = ParseClass.contains(data, COMMENT_FIN) == -1;
-                    }
-
-                    else {
-                        if(ParseClass.contains(data,COMMENT_TYPE) != -1) {
-                            compteCommentaires += 1;
-                        }
-                    }
-                }
-            }
-            myReader.close();
-        }
-
-        catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-
-        double densite = compteCommentaires/compteLignes;
-        mesures[0] = compteLignes;
-        mesures[1] = compteCommentaires;
-        mesures[2] = densite;
-        mesures[3] = ParseClass.WMC(chemin);
-        mesures[4] = mesures[1]/mesures[3]; //bc
-        return mesures;
-    }
-
-    /**
-     * Fonction qui calcule le WMC de la classe
-     * @param chemin chemin d'accès de la classe qu'on veut parcourir
-     * @return WMC
-     */
-    public static double WMC(String chemin){
-        double WMC = 0;
-        boolean firstMethod = false;
-
-        /*
-        cette méthode pour lire un fichier est inspirée de celle trouvée sur :
-        https://www.w3schools.com/java/java_files_read.asp
-        */
-        try {
-            File myObj = new File(chemin);
-            Scanner myReader = new Scanner(myObj);
-
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-
-                //on ne prend pas en compte les lignes vides
-                if(data.length()!=0 && !ParseClass.vide(data)) {
 
                     // indique la première méthode de la classe (on ignore les delimiters des attributs)
                     for (String classDelimiter : CLASS_DELIMITERS) {
@@ -174,6 +121,20 @@ public abstract class ParseClass{
                             }
                         }
                     }
+
+                    //on est à l'intérieur d'un commentaire ou au début
+                    if(debut || (ParseClass.contains(data,COMMENT_DEBUT)!=-1)) {
+                        compteCommentaires += 1;
+
+                        //on n'est pas encore sur la dernière ligne du commentaire
+                        debut = ParseClass.contains(data, COMMENT_FIN) == -1;
+                    }
+
+                    else {
+                        if(ParseClass.contains(data,COMMENT_TYPE) != -1) {
+                            compteCommentaires += 1;
+                        }
+                    }
                 }
             }
             myReader.close();
@@ -183,7 +144,14 @@ public abstract class ParseClass{
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        return WMC;
+
+        double densite = compteCommentaires/compteLignes;
+        mesures[0] = compteLignes;
+        mesures[1] = compteCommentaires;
+        mesures[2] = densite;
+        mesures[3] = WMC;
+        mesures[4] = mesures[1]/mesures[3]; //bc
+        return mesures;
     }
 
     /**
