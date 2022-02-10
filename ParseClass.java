@@ -28,9 +28,10 @@ public abstract class ParseClass{
      *
      * @param ligne la ligne qu'on veut parcourir
      * @param pattern le pattern de string qu'on cherche
+     * @param spaces false: les espaces dans le pattern ne sont pas acceptés, true: ils le sont
      * @return -1 si la ligne ne contient pas le pattern cherché, l'index du début du pattern sinon
      */
-    public static int contains(String ligne, String pattern) {
+    public static int contains(String ligne, String pattern, Boolean spaces) {
         boolean isInQuote = false;
         int length = pattern.length();
         int indexChar = 0;
@@ -50,8 +51,10 @@ public abstract class ParseClass{
                             test = pattern.charAt(indexChar);
                         }
                     } else {
-                        indexChar = 0;
-                        test = pattern.charAt(indexChar);
+                        if(!(ligne.charAt(i)==' ' && spaces)) {
+                            indexChar = 0;
+                            test = pattern.charAt(indexChar);
+                        }
                     }
                 }
             } else {
@@ -99,8 +102,8 @@ public abstract class ParseClass{
 
                     // indique la première méthode de la classe (on ignore les delimiters des attributs)
                     for (String classDelimiter : CLASS_DELIMITERS) {
-                        if (ParseClass.contains(data, classDelimiter) != -1) {
-                            if (ParseClass.contains(data, "{") != -1) {
+                        if (ParseClass.contains(data, classDelimiter,false) != -1) {
+                            if (ParseClass.contains(data, "){",true) != -1) {
                                 firstMethod = true;
                             }
                         }
@@ -108,7 +111,7 @@ public abstract class ParseClass{
 
                     // compte le nombre d'éléments de flow pour la complexité de McCabe
                     for (String flowElement : FLOW_ELEMENTS) {
-                        if (ParseClass.contains(data, flowElement) != -1) {
+                        if (ParseClass.contains(data, flowElement,false) != -1) {
                             WMC += 1;
                         }
                     }
@@ -116,22 +119,22 @@ public abstract class ParseClass{
                     // compte le nombre de méthodes
                     if(firstMethod){
                         for (String classDelimiter : CLASS_DELIMITERS) {
-                            if (ParseClass.contains(data, classDelimiter) != -1) {
+                            if (ParseClass.contains(data, classDelimiter,false) != -1) {
                                 WMC += 1;
                             }
                         }
                     }
 
                     //on est à l'intérieur d'un commentaire ou au début
-                    if(debut || (ParseClass.contains(data,COMMENT_DEBUT)!=-1)) {
+                    if(debut || (ParseClass.contains(data,COMMENT_DEBUT,false)!=-1)) {
                         compteCommentaires += 1;
 
                         //on n'est pas encore sur la dernière ligne du commentaire
-                        debut = ParseClass.contains(data, COMMENT_FIN) == -1;
+                        debut = ParseClass.contains(data, COMMENT_FIN,false) == -1;
                     }
 
                     else {
-                        if(ParseClass.contains(data,COMMENT_TYPE) != -1) {
+                        if(ParseClass.contains(data,COMMENT_TYPE,false) != -1) {
                             compteCommentaires += 1;
                         }
                     }
