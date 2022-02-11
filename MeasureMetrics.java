@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Properties;
 
 public class MeasureMetrics {
 
@@ -39,19 +40,53 @@ public class MeasureMetrics {
      *
      * @param args le chemin d'accès spécifié par l'usager qui mène à la classe ou au paquet
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if (args.length != 1) {
             System.out.println("Veuillez entrer le chemin d'accès d'un dossier qui contient du code java.");
         }
 
         else {
+
+            //https://www.baeldung.com/java-properties
+            String configPath = "comment.properties";
+            Properties commentProps = new Properties();
+            commentProps.load(new FileInputStream(configPath));
+
+            String[] infosCommentaires = new String[4];
+            infosCommentaires[0] = commentProps.getProperty("comment_type");
+            infosCommentaires[1] = commentProps.getProperty("comment_debut");
+            infosCommentaires[2] = commentProps.getProperty("comment_fin");
+            infosCommentaires[3] = commentProps.getProperty("extension");
+
+            String[][] infosComplexite = new String[2][];
+            String class_delimiters = commentProps.getProperty("class_delimiters");
+            class_delimiters = class_delimiters.substring(1,class_delimiters.length()-1);
+            String[] class_delimiters_array = class_delimiters.split(",");
+            for(int i = 0; i < class_delimiters_array.length; i++) {
+                String delimiter = class_delimiters_array[i];
+                delimiter = delimiter.substring(1,delimiter.length()-1);//enlever les guillemets
+                class_delimiters_array[i] = delimiter;
+            }
+
+            String flow_elements = commentProps.getProperty("flow_elements");
+            flow_elements = flow_elements.substring(1,flow_elements.length()-1);
+            String[] flow_elements_array = flow_elements.split(",");
+            for(int i = 0; i < flow_elements_array.length; i++) {
+                String element = flow_elements_array[i];
+                element = element.substring(1,element.length()-1);//enlever les guillemets
+                flow_elements_array[i] = element;
+            }
+
+            infosComplexite[0] = class_delimiters_array;
+            infosComplexite[1] = flow_elements_array;
+
             int debut = args[0].length()-5;
             String end = args[0].substring(debut);
 
             //si end=.java, alors on a une classe java
-            if (end.equals(".java")) {
-                double[] infos = ParseClass.read(args[0]);
-                String nom = ParseClass.extraireNom(args[0]);
+            if (end.equals("."+infosCommentaires[3])) {
+                double[] infos = ParseClass.read(args[0],infosCommentaires,infosComplexite);
+                String nom = ParseClass.extraireNom(args[0],infosCommentaires[3]);
                 //si on a juste une classe, le tableau des paquets est vide
                 String[][] packages = new String[0][5];
                 String[][] classes = new String[1][7];
@@ -72,8 +107,8 @@ public class MeasureMetrics {
 
                 //on a un paquet, il faut donc le parse
                 if (racine.isDirectory()) {
-                    String name = ParseClass.extraireNom(args[0]);
-                    String[][][] infos = ParsePackage.parse(args[0], name);
+                    String name = ParseClass.extraireNom(args[0],infosCommentaires[3]);
+                    String[][][] infos = ParsePackage.parse(args[0], name,infosCommentaires,infosComplexite);
                     String[][] packages = infos[0];
                     String[][] classes = infos[1];
                     writeCSV(classes, "class", "classes");

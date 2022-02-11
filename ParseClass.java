@@ -3,12 +3,6 @@ import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
 
 public abstract class ParseClass{
-    static String COMMENT_TYPE = "//";
-    static String COMMENT_DEBUT = "/*";
-    static String COMMENT_FIN = "*/";
-    static String[] CLASS_DELIMITERS = {"public", "private", "protected", "default"};
-    static String[] FLOW_ELEMENTS = {"if", "else", "case", "default", "for", "while", "break",
-            "continue", "&&", "||", "?", ":", "catch", "finally", "throw", "throws"};
 
     /**
      * On veut vérifier si la ligne est vide car les lignes vides ne sont pas à prendre en compte
@@ -72,15 +66,21 @@ public abstract class ParseClass{
      * @param chemin chemin d'accès de la classe qu'on veut parcourir
      * @return un tableau contenant LOC, CLOC et la densité, WMC et BC
      */
-    public static double[] read(String chemin) {
+    public static double[] read(String chemin, String[] infos, String[][] infoComplexite) {
         double[] mesures = new double[5];
-
+        String COMMENT_TYPE = infos[0];
+        String COMMENT_DEBUT = infos[1];
+        String COMMENT_FIN = infos[2];
+        String extension = infos[3];
         //variable qui sert à voir quand on a un commentaire ouvert qui pourrait s'étendre sur plus
         // d'une ligne
         boolean debut = false;
         double compteCommentaires = 0;
         double compteLignes = 0;
         double WMC = 0;
+
+        String[] CLASS_DELIMITERS = infoComplexite[0];
+        String[] FLOW_ELEMENTS = infoComplexite[1];
 
         /*
         cette méthode pour lire un fichier est inspirée de celle trouvée sur :
@@ -152,9 +152,9 @@ public abstract class ParseClass{
      * @param chemin chemin d'accès de la classe
      * @return le nom de la classe sans le .java
      */
-    public static String extraireNom(String chemin) {
+    public static String extraireNom(String chemin, String extension) {
         String nom = "";
-        String substring = chemin.substring(0, chemin.length()-5);
+        String substring = chemin.substring(0, chemin.length()-extension.length()+1);
 
         boucle:
         for(int i = substring.length()-1;i >= 0; i--){

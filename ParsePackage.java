@@ -8,10 +8,12 @@ public abstract class ParsePackage {
      * @return Le premier tableau contient les informations des classes et le second, les informations
      * concernant les packages Java
      */
-    public static String[][][] parse(String path,String name){
+    public static String[][][] parse(String path,String name,String[] infosCommentaires, String[][] infoComplexite){
         double loc = 0;
         double cloc = 0;
         double wcp = 0;
+        String extension = infosCommentaires[3];
+        int extensionLength = extension.length();
 
         String[][] packageInfo = new String[0][5];
         String[][] classInfo = new String[0][5];
@@ -27,17 +29,17 @@ public abstract class ParsePackage {
         for (String s : contenu) {
 
             //si on a une classe java
-            if (s.length() > 5 && s.substring(s.length() - 5).equals(".java")) {
+            if (s.length() > (extensionLength+1) && s.substring(s.length() - (extensionLength+1)).equals("."+extension)) {
 
                 //on update avec les infos de la classe
-                double[] infos = ParseClass.read(path + "/" + s);
+                double[] infos = ParseClass.read(path + "/" + s,infosCommentaires, infoComplexite);
                 loc += infos[0];
                 cloc += infos[1];
                 wcp += infos[3];
 
                 String[] infosToAdd = new String[7];
                 infosToAdd[0] = path + "/" + s;
-                infosToAdd[1] = ParseClass.extraireNom(s);
+                infosToAdd[1] = ParseClass.extraireNom(s,infosCommentaires[3]);
                 infosToAdd[2] = "" + infos[0];
                 infosToAdd[3] = "" + infos[1];
                 infosToAdd[4] = "" + infos[2];
@@ -52,7 +54,8 @@ public abstract class ParsePackage {
                 File dossier = new File(path + "/" + s);
 
                 if (dossier.isDirectory()) {
-                    String[][][] infosPaquet = ParsePackage.parse(path + "/" + s, name+"."+s);
+                    String[][][] infosPaquet = ParsePackage.parse(path + "/" + s, name+"."+s,
+                            infosCommentaires, infoComplexite);
                     String[][] classes = infosPaquet[1];
                     String[][] paquets = infosPaquet[0];
 

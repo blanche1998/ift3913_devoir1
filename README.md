@@ -3,7 +3,7 @@ Catherine Engert -- matricule 20161137 \
 Blanche Mongeon -- matricule 20150242
 
 ## Informations pour la compilation et l'exécution
-Pour la compilation du code, il suffit de
+Le code a été écrit avec java 11. Il est compilable.
 
 
 Pour l'exécution, le code prend en argument le chemin d'accès du package ou de la classe java.

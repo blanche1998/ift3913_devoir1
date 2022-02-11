@@ -8,7 +8,7 @@ Les 3 classes les moins bien commentées sont celles avec le degré selon lequel
 3) ChartPanel (classe_BC = 5.470E-04)
 
 
-Les 3 classes les moins bien commentées sont celles avec le degré selon lequel un paquet est bien commenté
+Les 3 paquets les moins bien commentées sont celles avec le degré selon lequel un paquet est bien commenté
 (paquet_BC) le plus faible
 
 1) jfreechart-m.src.main.java.org.jfree.chart (paquet_BC = 1.55E-05)

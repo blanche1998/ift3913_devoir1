@@ -3,24 +3,29 @@ PARTIE 4
 Les 3 classes les moins bien commentées sont celles avec le degré selon lequel une classe est bien commentée
 (classe_BC) le plus faible, soit:
 
-1) module-info (classe_BC = 0.070)
-2) PolarPlotTest (classe_BC = 0.175)
-3) LegendItemTest (classe_BC = 0.184)
+1) XYPlot (classe_BC = 3.70E-04)
+2) CategoryPlot (classe_BC = 4.10E-04)
+3) ChartPanel (classe_BC = 5.470E-04)
 
 
-Les 3 paquets les moins bien commentés sont ceux avec la plus faible densité de commentaires pour un paquet (paquet_DC) soit:
+Les 3 classes les moins bien commentées sont celles avec le degré selon lequel un paquet est bien commenté
+(paquet_BC) le plus faible
 
-1) jfreechart-m.src.test.java.org.jfree.chart.plot.flow (paquet_DC = 0.256)
-2) jfreechart-m.src.test.java.org.jfree.chart.plot.pie (paquet_DC = 0.274)
-3) jfreechart-m.src.test.java.org.jfree.data.category (paquet_DC = 0.294)
-
-
-Les #2 et #3 des classes et les tops 3 packages qui ont peu de commentaires sont des classes de tests ou des packages qui ne
-contiennent que des classes de tests. Plusieurs des tests n'ont aucun commentaire, donc on a aucune idée de ce qu'ils effectuent.
-Il faudrait mettre des commentaires explicatifs dans ces classes afin qu'un développeur externe puisse comprendre comment ces
-testsfonctionnent. 
+1) jfreechart-m.src.main.java.org.jfree.chart (paquet_BC = 1.55E-05)
+2) jfreechart-m.src.main.java (paquet_BC = 5.55E-05)
+3) jfreechart-m.src.main.java.org.jfree.data (paquet_BC = 1.55E-05)
 
 
-Cependant, la densité de commentaires n'est peut-être pas une bonne métrique pour analyser si des fichiers de code sont bien
-commentés. En effet, cette métrique ne permet pas de prendre en compte la pertinence des commentaires ou le fait qu'il puisse
-y avoir trop de commentaires, rendant le fichier de code excessivement dense et difficile à comprendre. 
+//La majorité des méthodes et des attributs dans les classes "mal commentées' sont très bien commentées avec la
+javadoc. Par contre, à l'intérieur même des classes plusieurs grosses sections ne sont pas du tout commentées,
+ce qui rend la compréhension difficile. Certaines méthodes gagneraient à être divisées en plusieurs méthodes qui
+seraient appelées dans une autre méthode. Chacune des sous-méthodes auraient alors sa javadoc, ce qui améliorerait
+la compréhension générale du code.
+
+
+Cependant, la densité de commentaires n'est peut-être pas une bonne métrique pour analyser si des fichiers de code
+sont bien commentés. En effet, cette métrique ne permet pas de prendre en compte la pertinence des commentaires ou
+le fait qu'il puisse y avoir trop de commentaires, rendant le fichier de code excessivement dense et difficile à
+comprendre. De plus, les classes ayant été identifiées comme ayant une faible degré contiennent beaucoup de "if" pour
+prendre en compte les valeurs nulles lorsqu'on essaie de faire des plots, ce qui ne représente pas nécessairement une
+mesure adéquate de la complexité.
