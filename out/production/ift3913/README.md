@@ -1,5 +1,5 @@
 # Étudiants
-Catherine Engert -- matricule 20161137 \
+Catherine Engert -- matricule
 Blanche Mongeon -- matricule 20150242
 
 ## Informations pour la compilation et l'exécution

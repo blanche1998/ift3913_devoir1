@@ -3,17 +3,17 @@ import java.io.*;
 public class MeasureMetrics {
 
    public static void writeCSV(String[][] content, String type, String outputName) {
-        try (PrintWriter writer = new PrintWriter(outputName + ".csv")) {
+        try (PrintWriter writer = new PrintWriter("PARTIE4/" + outputName + ".csv")) {
             StringBuilder sb = new StringBuilder();
             sb.append("chemin,");
             sb.append(type);
-            sb.append(",classe_LOC,classe_CLOC,classe_DC,");
 
             if(type.equals("class")){
-                sb.append("WMC,classe_BC");
+                sb.append(",classe_LOC,classe_CLOC,classe_DC,WMC,classe_BC");
+                sb.append("");
             }
             if(type.equals("paquet")){
-                sb.append("WCP,paquet_BC");
+                sb.append(",paquet_LOC,paquet_CLOC,paquet_DC,WCP,paquet_BC");
             }
 
             sb.append("\n");

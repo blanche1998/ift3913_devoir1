@@ -19,7 +19,6 @@ chemin,paquet,classe_LOC,classe_CLOC,classe_DC,WCP,paquet_BC
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/test/java/org/jfree/chart/axis,jfreechart-m.src.test.java.org.jfree.chart.axis,5087.0,1886.0,0.3707489679575388,637.0,5.820234975785539E-4
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/test/java/org/jfree/chart/api,jfreechart-m.src.test.java.org.jfree.chart.api,87.0,41.0,0.47126436781609193,11.0,0.042842215256008356
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/test/java/org/jfree/chart/text/format,jfreechart-m.src.test.java.org.jfree.chart.text.format,347.0,152.0,0.43804034582132567,67.0,0.006537915609273517
-/Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/test/java/org/jfree/chart/text,jfreechart-m.src.test.java.org.jfree.chart.text,347.0,152.0,0.43804034582132567,67.0,0.006537915609273517
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/test/java/org/jfree/chart/block,jfreechart-m.src.test.java.org.jfree.chart.block,2012.0,757.0,0.37624254473161034,198.0,0.0019002148723818704
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/test/java/org/jfree/chart,jfreechart-m.src.test.java.org.jfree.chart,40340.0,15551.0,0.38549826474962817,5427.0,7.10334005435099E-5
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/test/java/org/jfree/data/statistics,jfreechart-m.src.test.java.org.jfree.data.statistics,2310.0,834.0,0.36103896103896105,321.0,0.0011247319658534611
@@ -32,10 +31,6 @@ chemin,paquet,classe_LOC,classe_CLOC,classe_DC,WCP,paquet_BC
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/test/java/org/jfree/data/xy,jfreechart-m.src.test.java.org.jfree.data.xy,5944.0,2270.0,0.38189771197846567,869.0,4.3946802299017914E-4
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/test/java/org/jfree/data/flow,jfreechart-m.src.test.java.org.jfree.data.flow,282.0,155.0,0.549645390070922,54.0,0.010178618334646703
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/test/java/org/jfree/data,jfreechart-m.src.test.java.org.jfree.data,24362.0,8492.0,0.34857565060339873,3494.0,9.97640671446476E-5
-/Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/test/java/org/jfree,jfreechart-m.src.test.java.org.jfree,64702.0,24043.0,0.37159593211956354,8921.0,4.165406704624633E-5
-/Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/test/java/org,jfreechart-m.src.test.java.org,64702.0,24043.0,0.37159593211956354,8921.0,4.165406704624633E-5
-/Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/test/java,jfreechart-m.src.test.java,64702.0,24043.0,0.37159593211956354,8921.0,4.165406704624633E-5
-/Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/test,jfreechart-m.src.test,64702.0,24043.0,0.37159593211956354,8921.0,4.165406704624633E-5
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/main/java/org/jfree/chart/legend,jfreechart-m.src.main.java.org.jfree.chart.legend,3356.0,1704.0,0.5077473182359953,640.0,7.933551847437426E-4
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/main/java/org/jfree/chart/imagemap,jfreechart-m.src.main.java.org.jfree.chart.imagemap,652.0,460.0,0.7055214723926381,164.0,0.004301960197516086
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/main/java/org/jfree/chart/renderer/category,jfreechart-m.src.main.java.org.jfree.chart.renderer.category,12580.0,5991.0,0.4762321144674086,2639.0,1.804593082483549E-4
@@ -79,9 +74,4 @@ chemin,paquet,classe_LOC,classe_CLOC,classe_DC,WCP,paquet_BC
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/main/java/org/jfree/data/xy,jfreechart-m.src.main.java.org.jfree.data.xy,11546.0,7241.0,0.6271435995149836,2601.0,2.41116339682808E-4
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/main/java/org/jfree/data/flow,jfreechart-m.src.main.java.org.jfree.data.flow,967.0,560.0,0.5791106514994829,261.0,0.0022188147567029997
 /Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/main/java/org/jfree/data,jfreechart-m.src.main.java.org.jfree.data,46575.0,26982.0,0.5793236714975846,10431.0,5.553865127960738E-5
-/Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/main/java/org/jfree,jfreechart-m.src.main.java.org.jfree,191667.0,100435.0,0.5240077843342881,42998.0,1.2186794370302993E-5
-/Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/main/java/org,jfreechart-m.src.main.java.org,191667.0,100435.0,0.5240077843342881,42998.0,1.2186794370302993E-5
-/Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/main/java,jfreechart-m.src.main.java,191710.0,100438.0,0.5239058995357572,42999.0,1.2184141480866001E-5
-/Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/main,jfreechart-m.src.main,191710.0,100438.0,0.5239058995357572,42999.0,1.2184141480866001E-5
-/Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src,jfreechart-m.src,256412.0,124481.0,0.48547259878632826,51920.0,9.350396740876893E-6
-/Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master,jfreechart-m,256412.0,124481.0,0.48547259878632826,51920.0,9.350396740876893E-6
+/Users/blanchemongeon/Documents/Universite/H22/IFT3913/jfreechart-master/src/main/java,jfreechart-m.src.main.java,46618.0,26985.0,0.5788536616757476,10432.0,5.54882727833347E-5
