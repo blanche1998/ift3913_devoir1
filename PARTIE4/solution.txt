@@ -16,10 +16,16 @@ Les 3 classes les moins bien commentées sont celles avec le degré selon lequel
 3) jfreechart-m.src.main.java.org.jfree.data (paquet_BC = 1.55E-05)
 
 
-// améliorations
+//La majorité des méthodes et des attributs dans les classes "mal commentées' sont très bien commentées avec la
+javadoc. Par contre, à l'intérieur même des classes plusieurs grosses sections ne sont pas du tout commentées,
+ce qui rend la compréhension difficile. Certaines méthodes gagneraient à être divisées en plusieurs méthodes qui
+seraient appelées dans une autre méthode. Chacune des sous-méthodes auraient alors sa javadoc, ce qui améliorerait
+la compréhension générale du code.
 
 
 Cependant, la densité de commentaires n'est peut-être pas une bonne métrique pour analyser si des fichiers de code
 sont bien commentés. En effet, cette métrique ne permet pas de prendre en compte la pertinence des commentaires ou
 le fait qu'il puisse y avoir trop de commentaires, rendant le fichier de code excessivement dense et difficile à
-comprendre.
+comprendre. De plus, les classes ayant été identifiées comme ayant une faible degré contiennent beaucoup de "if" pour
+prendre en compte les valeurs nulles lorsqu'on essaie de faire des plots, ce qui ne représente pas nécessairement une
+mesure adéquate de la complexité.
