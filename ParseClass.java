@@ -143,7 +143,7 @@ public abstract class ParseClass{
         mesures[1] = compteCommentaires;
         mesures[2] = densite;
         mesures[3] = WMC;
-        mesures[4] = mesures[1]/mesures[3]; //bc
+        mesures[4] = mesures[2]/mesures[3]; //bc
         return mesures;
     }
 

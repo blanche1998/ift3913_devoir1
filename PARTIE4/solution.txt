@@ -1,17 +1,18 @@
 PARTIE 4
 
-Les 3 classes les moins bien commentées sont celles avec la plus faible densité de commentaires pour une classe (classe_DC) soit:
+Les 3 classes les moins bien commentées sont celles avec le degré selon lequel une classe est bien commentée
+(classe_BC) le plus faible, soit:
 
-1) module-info (classe_DC = 0.070)
-2) PolarPlotTest (classe_DC = 0.175)
-3) LegendItemTest (classe_DC = 0.184)
+1) XYPlot (classe_BC = 3.70E-04)
+2) CategoryPlot (classe_BC = 4.10E-04)
+3) ChartPanel (classe_BC = 5.470E-04)
 
 
 Les 3 paquets les moins bien commentés sont ceux avec la plus faible densité de commentaires pour un paquet (paquet_DC) soit:
 
-1) jfreechart-m.src.test.java.org.jfree.chart.plot.flow (paquet_DC = 0.256)
-2) jfreechart-m.src.test.java.org.jfree.chart.plot.pie (paquet_DC = 0.274)
-3) jfreechart-m.src.test.java.org.jfree.data.category (paquet_DC = 0.294)
+1) jfreechart-m.src.main.java.org.jfree.chart (paquet_BC = 1.55E-05)
+2) jfreechart-m.src.main.java (paquet_BC = 5.55E-05)
+3) jfreechart-m.src.main.java.org.jfree.data (paquet_BC = 1.55E-05)
 
 
 Les #2 et #3 des classes et les tops 3 packages qui ont peu de commentaires sont des classes de tests ou des packages qui ne

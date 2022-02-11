@@ -1,10 +1,11 @@
 PARTIE 4
 
-Les 3 classes les moins bien commentées sont celles avec la plus faible densité de commentaires pour une classe (classe_DC) soit:
+Les 3 classes les moins bien commentées sont celles avec le degré selon lequel une classe est bien commentée
+(classe_BC) le plus faible, soit:
 
-1) module-info (classe_DC = 0.070)
-2) PolarPlotTest (classe_DC = 0.175)
-3) LegendItemTest (classe_DC = 0.184)
+1) module-info (classe_BC = 0.070)
+2) PolarPlotTest (classe_BC = 0.175)
+3) LegendItemTest (classe_BC = 0.184)
 
 
 Les 3 paquets les moins bien commentés sont ceux avec la plus faible densité de commentaires pour un paquet (paquet_DC) soit:
