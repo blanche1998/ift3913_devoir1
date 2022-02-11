@@ -19,7 +19,7 @@ Les 3 classes les moins bien commentées sont celles avec le degré selon lequel
 // améliorations
 
 
-Cependant, la densité de commentaires n'est peut-être pas une bonne métrique pour analyser si des fichiers de code sont
-bien commentés. En effet, cette métrique ne permet pas de prendre en compte la pertinence des commentaires ou le
-fait qu'il puisse y avoir trop de commentaires, rendant le fichier de code excessivement dense et difficile à
+Cependant, la densité de commentaires n'est peut-être pas une bonne métrique pour analyser si des fichiers de code
+sont bien commentés. En effet, cette métrique ne permet pas de prendre en compte la pertinence des commentaires ou
+le fait qu'il puisse y avoir trop de commentaires, rendant le fichier de code excessivement dense et difficile à
 comprendre.
