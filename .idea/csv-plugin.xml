@@ -3,14 +3,14 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="/classes.csv">
+        <entry key="/PARTIE4/classes.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/classes_preChangements.csv">
+        <entry key="/PARTIE4/paquets.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -39,20 +39,6 @@
           </value>
         </entry>
         <entry key="/out/production/ift3913/paquets_preChangements.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/paquets.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/paquets_preChangements.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
