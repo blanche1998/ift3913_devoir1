@@ -4,7 +4,8 @@ import java.util.Properties;
 public class MeasureMetrics {
 
    public static void writeCSV(String[][] content, String type, String outputName) {
-        try (PrintWriter writer = new PrintWriter("PARTIE4/" + outputName + ".csv")) {
+        try (PrintWriter writer = new PrintWriter(outputName + ".csv")) {
+            System.out.println("coucou");
             StringBuilder sb = new StringBuilder();
             sb.append("chemin,");
             sb.append(type);
