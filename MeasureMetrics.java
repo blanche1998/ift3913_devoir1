@@ -43,9 +43,19 @@ public class MeasureMetrics {
     public static void main(String[] args) throws IOException {
 
         //https://www.baeldung.com/java-properties
-        String configPath = "comment.properties";
+        //String configPath = "/comment.properties";
+        //Properties commentProps = new Properties();
+        //commentProps.load(new FileInputStream(configPath));
+
+        //InputStream in = this.getClass().getResourceAsStream("comment.properties");
+        //Properties commentProps = new Properties();
+        //commentProps.load(in);
+        //in.close();
+
+        InputStream fin=null;
+        fin=ClassLoader.getSystemResourceAsStream("comment.properties"); //this is a static function
         Properties commentProps = new Properties();
-        commentProps.load(new FileInputStream(configPath));
+        commentProps.load(fin);
 
         String[] infosCommentaires = new String[4];
         infosCommentaires[0] = commentProps.getProperty("comment_type");
